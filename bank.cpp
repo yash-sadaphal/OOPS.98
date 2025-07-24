@@ -12,7 +12,7 @@ class Bank{
     }B;
 void Bank::assign() 
 {
-    cout<<"Enter the depositer name : ";
+    cout<<"Create bank account:)\nEnter the depositer name : ";
     cin>>depositorname;
     cout<<"Enter the account no: ";
     cin>>accountnumber;
@@ -41,16 +41,35 @@ void Bank::withdraw()
 }
 void Bank:: display()
 {
-    cout<<"\nName of depositor:"<<depositorname<<"\n";
+    cout<<"Name of depositor:"<<depositorname<<"\n";
     cout<<"Account number:"<<accountnumber<<"\n";
-    cout<<"balance:"<<balance<<"\n";
+    cout<<"Current balance:"<<balance<<"\n";
 }    
 
 int main()
 {
+ Bank B;
+ int choice;   
     B.assign();
-    B.deposit();
-    B.withdraw();
-    B.display();
+    do{ 
+        cout<<"\nBank menu:)"<< "\n1. Deposit"<< "\n2. Withdraw"<<"\n3. Display"<< "\n4. Exit"<< "\nEnter your choice: ";
+        cin >> choice;
+        switch(choice){
+            case 1:
+            B.deposit();
+            break;
+            case 2:
+            B.withdraw();
+            break;
+            case 3:
+            B.display();
+            break;
+            case 4:
+            cout<<"EXITING THE PROGRAM !!\n";
+            break;
+            default:
+            cout<<"invalide choice\n";
+        }
+    }while(choice!=4);
     return 0;
 }
