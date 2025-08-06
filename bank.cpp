@@ -1,5 +1,6 @@
-//THIS IS MY CODE TO NO OF CUSTOMER OF BANK ACC AND DETAILS
-#include<iostream>
+/*This is my program for the bank details of multiple custumer to have different option 
+like deposite withdraw and even search the details of the custumer.*/
+#include <iostream>
 using namespace std;
 
 int n; // Number of customers
@@ -17,8 +18,10 @@ public:
     void display();
 };
 
+Bank B[100]; // Global array
+
 void Bank::assign() {
-    cout << "Create bank account :)\nEnter the depositor name :";
+    cout << "Create bank account :)\nEnter the depositor name: ";
     cin >> depositorname;
     cout << "Enter the account number: ";
     cin >> accountnumber;
@@ -52,6 +55,25 @@ void Bank::withdraw() {
     }
 }
 
+void searchAccount() {
+    int no;
+    cout << "Enter the accno to search: ";
+    cin >> no;
+    bool found = false;
+
+    for (int i = 0; i < n; i++) {
+        if (B[i].accountnumber == no) {
+            B[i].display();
+            found = true;
+            break;
+        }
+    }
+
+    if (!found) {
+        cout << "Record not found\n";
+    }
+}
+
 void Bank::display() {
     cout << "Name of depositor: " << depositorname << "\n";
     cout << "Account number: " << accountnumber << "\n";
@@ -59,20 +81,12 @@ void Bank::display() {
 }
 
 int main() {
-    Bank B[100];
     int choice, accno;
 
     while (1) {
         int f = 0;
-        cout << "\nBank Menu :)\n"
-             << "1. Assign\n"
-             << "2. Deposit\n"
-             << "3. Withdraw\n"
-             << "4. Display All Accounts\n"
-             << "5. EXIT\n"
-             << "Enter your choice: ";
+        cout << "\nBank Menu :)\n1. Assign\n2. Deposit\n3. Withdraw\n4. Display All Accounts\n5. Search account\n6. EXIT\nEnter your choice: ";
         cin >> choice;
-
         switch (choice) {
             case 1:
                 cout << "Enter the number of customers: ";
@@ -125,6 +139,10 @@ int main() {
                 break;
 
             case 5:
+                searchAccount();
+                break;
+
+            case 6:
                 cout << "Exiting program. Bye!!\n";
                 return 0;
 
@@ -132,6 +150,4 @@ int main() {
                 cout << "Invalid choice.\n";
         }
     }
-
-    return 0;
 }
