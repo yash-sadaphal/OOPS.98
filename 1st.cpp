@@ -7,7 +7,7 @@ class Student{
     public:
      void accept();
      void display();
-}S;
+}B;
 void Student::accept() 
 {
     cout<<"Enter the roll no: ";
